@@ -13,6 +13,7 @@ const LogoSearch = ({ setNewUser, place }) => {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+    const serverStatic = process.env.REACT_APP_PUBLIC_STATIC;
 
     const setUser = (person) => {
         dispatch(getUser(person._id));
@@ -43,7 +44,7 @@ const LogoSearch = ({ setNewUser, place }) => {
                                   src={
                                       person?.profilePicture
                                           ? serverPublic + person.profilePicture
-                                          : serverPublic + "defaultProfile.jpg"
+                                          : serverStatic + "defaultProfile.jpg"
                                   }
                                   alt=""
                               />
@@ -66,7 +67,7 @@ const LogoSearch = ({ setNewUser, place }) => {
                                       src={
                                           person?.profilePicture
                                               ? serverPublic + person.profilePicture
-                                              : serverPublic + "defaultProfile.jpg"
+                                              : serverStatic + "defaultProfile.jpg"
                                       }
                                       alt=""
                                   />

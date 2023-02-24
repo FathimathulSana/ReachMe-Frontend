@@ -12,6 +12,7 @@ const ProfileCard = ({ location }) => {
     const { user } = useSelector((state) => state.authReducer.authData);
     const posts = useSelector((state) => state.postReducer.posts);
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+    const serverStatic = process.env.REACT_APP_PUBLIC_STATIC;
     const [profile, setProfile] = useState(null);
 
     useEffect(() => {
@@ -30,12 +31,12 @@ const ProfileCard = ({ location }) => {
         <div className="ProfileCard">
             <div className="ProfileImages">
                 <img
-                    src={profile?.coverPicture ? serverPublic + profile?.coverPicture : serverPublic + "defaultCover.jpeg"}
+                    src={profile?.coverPicture ? serverPublic + profile?.coverPicture : serverStatic + "defaultCover.jpeg"}
                     alt=""
                 />
                 <img
                     src={
-                        profile?.coverPicture ? serverPublic + profile?.profilePicture : serverPublic + "defaultProfile.jpg"
+                        profile?.coverPicture ? serverPublic + profile?.profilePicture : serverStatic + "defaultProfile.jpg"
                     }
                     alt=""
                 />

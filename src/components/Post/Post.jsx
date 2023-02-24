@@ -30,6 +30,7 @@ const Post = ({ data, refresh, setRefresh }) => {
     const [reportPostModalOpen, setReportPostModalOpen] = useState(false);
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
     const serverVideos = process.env.REACT_APP_PUBLIC_VIDEOS;
+    const serverStatic = process.env.REACT_APP_PUBLIC_STATIC;
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -87,7 +88,7 @@ const Post = ({ data, refresh, setRefresh }) => {
                             src={
                                 owner?.profilePicture
                                     ? serverPublic + owner.profilePicture
-                                    : serverPublic + "defaultProfile.jpg"
+                                    : serverStatic + "defaultProfile.jpg"
                             }
                             alt=""
                         />
