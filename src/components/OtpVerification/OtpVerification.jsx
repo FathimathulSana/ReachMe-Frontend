@@ -10,7 +10,7 @@ import { resendotp } from "../../api/AuthRequests";
 import Alert from "../Alert/Alert";
 
 const OtpVerification = () => {
-    const { error, message } = useSelector((state) => state.authReducer);
+    const [ error, message ]  = useSelector((state) => state.authReducer);
     const [otpOne, setOtpOne] = useState("");
     const [otpTwo, setOtpTwo] = useState("");
     const [otpThree, setOtpThree] = useState("");
