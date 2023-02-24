@@ -10,6 +10,7 @@ const User = ({ person, list, id }) => {
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.authReducer.authData);
     const [following, setFollowing] = useState(person.followers.includes(user._id));
+    const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
     const serverStatic = process.env.REACT_APP_PUBLIC_STATIC;
     const handleFollow = () => {
         following ? dispatch(unFollowUser(person._id, user)) : dispatch(followUser(person._id, user));
