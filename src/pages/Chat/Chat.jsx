@@ -29,26 +29,26 @@ const Chat = () => {
     const [notificationModal, setNotificationModal] = useState(false);
     const [settingModalOpend, setSettingModalOpened] = useState(false);
 
-    const socket = useRef();
+    // const socket = useRef();
+    const socket =io.connect(process.env.REACT_APP_BASE_URL)
 
     //send message to socket server
     useEffect(() => {
         if (sendMessage !== null) {
-            socket.current.emit("send-message", sendMessage);
+            socket.emit("send-message", sendMessage);
         }
     }, [sendMessage]);
 
     useEffect(() => {
-        socket.current = io("http://localhost:8800");
-        socket.current.emit("new-user-add", user._id);
-        socket.current.on("get-users", (users) => {
+        socket.emit("new-user-add", user._id);
+        socket.on("get-users", (users) => {
             setOnlineUsers(users);
         });
     }, [user]);
 
     //receive message from socket server
     useEffect(() => {
-        socket.current.on("receive-message", (data) => {
+        socket.on("receive-message", (data) => {
             setReceiveMessage(data);
         });
     }, []);
