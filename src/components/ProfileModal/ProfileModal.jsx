@@ -31,14 +31,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!formData.firstname || !formData.lastname) {
-            return toast("Fill First Name & Last Name", {
-                icon: "🫤",
-                style: {
-                    borderRadius: "10px",
-                    background: "#333",
-                    color: "#fff",
-                },
-            });
+            return toast.error("Fill First Name & Last Name");
         }
         let UserData = formData;
         if (profileImage) {
@@ -50,14 +43,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                     profileImage.type === "image/jpg"
                 )
             ) {
-                return toast("oops! only support jpeg,png,jpg and webp", {
-                    icon: "🙄",
-                    style: {
-                        borderRadius: "10px",
-                        background: "#333",
-                        color: "#fff",
-                    },
-                });
+                return toast.error("oops! only support jpeg,png,jpg and webp");
             }
 
             const data = new FormData();
@@ -80,14 +66,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                     coverImage.type === "image/jpg"
                 )
             ) {
-                return toast("oops! only support jpeg,png,jpg and webp", {
-                    icon: "🙄",
-                    style: {
-                        borderRadius: "10px",
-                        background: "#333",
-                        color: "#fff",
-                    },
-                });
+                return toast.error("oops! only support jpeg,png,jpg and webp");
             }
             const data = new FormData();
             const fileName = Date.now() + coverImage.name;

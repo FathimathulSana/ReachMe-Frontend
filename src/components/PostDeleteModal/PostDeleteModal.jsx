@@ -12,21 +12,23 @@ const PostDeleteModal = ({ modalOpen, setModalOpen, id, currentUser }) => {
     };
     return (
         <Modal
-            overlayColor={theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[2]}
-            overlayOpacity={0.02}
-            overlayBlur={3}
-            size="35%"
             opened={modalOpen}
             onClose={() => setModalOpen(false)}
             centered={true}
             withCloseButton={false}
         >
-            <span style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+            <div style={{ gap: "10px", display: "flex", justifyContent: "center" }}>
                 Are you sure you want to delete this post?{" "}
-                <button className="button" style={{ fontSize: "15px" }} onClick={handleDelete}>
+            </div>
+            <div style={{  display: "flex", justifyContent: "center", marginTop: "10px" }}>
+                <button
+                    className="button button-delete"
+                    style={{ fontSize: "15px", display: "flex", alignSelf: "center"}}
+                    onClick={handleDelete}
+                >
                     Yes
                 </button>
-            </span>
+            </div>
         </Modal>
     );
 };

@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { editPost } from "../../api/UserRequest";
 import "../ReportPostModal/ReportPostModal.css";
 
-function PostEditModal({ editModalOpen, setEditModalOpen, setRefresh, userId, postId }) {
+function PostEditModal({ editModalOpen, setEditModalOpen, setRefresh, postId,description}) {
     const [value, setValue] = useState(null);
     const dispatch = useDispatch();
     const editSubmit = async () => {
@@ -23,11 +23,13 @@ function PostEditModal({ editModalOpen, setEditModalOpen, setRefresh, userId, po
     return (
         <Modal opened={editModalOpen} centered={true} withCloseButton={false} onClose={() => setEditModalOpen(false)}>
             <div className="fieldsetStyleItems" style={{ textAlign: "center" }}>
-                <span>Edit the Description of your Post</span>
+                <span>Edit the Caption of your Post</span>
 
                 <input
                     className="Input"
                     type="text"
+                    defaultValue={description}
+                    // value={value}
                     style={{ width: "100", marginTop: "10px" }}
                     onChange={(e) => {
                         setValue(e.target.value);

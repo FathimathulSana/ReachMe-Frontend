@@ -150,6 +150,7 @@ const Post = ({ data, refresh, setRefresh }) => {
                     setEditModalOpen={setEditModalOpen}
                     userId={user._id}
                     postId={data._id}
+                    description={data.description}
                 />
             }
 
