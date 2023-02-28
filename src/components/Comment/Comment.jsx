@@ -30,14 +30,7 @@ const Comment = ({ data }) => {
         e.preventDefault();
         try {
             if (comment.length === 0 || comment.indexOf(" ") === 0) {
-                return toast("Write Something", {
-                    icon: "🫤",
-                    style: {
-                        borderRadius: "10px",
-                        background: "#333",
-                        color: "#fff",
-                    },
-                });
+                return toast.error("Write Something");
             } else {
                 const response = await dispatch(createComment(data._id, comment, user._id));
 

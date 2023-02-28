@@ -6,6 +6,7 @@ import { addMessage, getMessages } from "../../api/MessageRequests";
 import { format } from "timeago.js";
 import InputEmoji from "react-input-emoji";
 import { useRef } from "react";
+import { toast } from "react-hot-toast";
 
 const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
     const [userData, setUserData] = useState(null);
@@ -53,6 +54,9 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
 
     const handleSend = async (e) => {
         e.preventDefault();
+        if (newMessage.length === 0 || newMessage.indexOf(" ") === 0) {
+            return toast.error("Write Something");
+        }else{
         const message = {
             senderId: currentUser,
             text: newMessage,
@@ -72,6 +76,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
         //send message to socket Server
         const receiverId = chat.members.find((id) => id !== currentUser);
         setSendMessage({ ...message, receiverId });
+    }
     };
 
     //Always scroll to last message
